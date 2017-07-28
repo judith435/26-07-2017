@@ -13,6 +13,19 @@
             $this->content_text = $row['content_text'];
         }
 
+        public function getContentType() {
+            return $this->content_type;
+        }
+
+        public function getContentHeader() {
+            return $this->content_header;
+        }
+
+        public function getContentText() {
+            return $this->content_text;
+        }
+
+
         public function printHtml() {
             return "<article><h2>".$this->content_header."</h2><p>"
             .$this->addRowsToHtmlContent($this->content_text)."</p></article>";

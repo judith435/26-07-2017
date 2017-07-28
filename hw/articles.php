@@ -1,7 +1,8 @@
 <?php
 
     require_once 'Content.php';
-    require_once 'configDb.php';
+    require_once 'articlesBL.php';
+
 
     if(isset($_POST["activity"])){
         $activity = $_POST["activity"];
@@ -43,6 +44,15 @@
         ];
 
         $Content  =  new Content($row);
+        articlesBL::executeStatement("insert into ls42_contents (content_type,
+                                                                 content_header,
+                                                                 content_text,
+                                                        values  (:content_type,
+                                                                 :content_header,
+                                                                 :content_text)",
+                                      [     "content_type" => $Content->getContentType(), 
+                                            "content_header" => $Content->getContentHeader(), 
+                                            "content_text" => $Content->getContentText()      ]);
 
         // $pdo = get_PDO();
         // $stmt = $pdo->prepare("insert into employee (employee_name,
@@ -53,14 +63,10 @@
         //         $stmt ->execute(array("employee_name" => $Employee -> getEmpName(), 
         //                               "employee_work_start_date" => $Employee -> getEmpWorkStartDate(), 
         //             ));
-        // echo 'insert successful';            
+         echo 'insert successful';            
     }
 
 
-    function get_PDO(){
-        $pdo_parms = ConfigDB::build_pdo_parms('northwind');
-        return new PDO($pdo_parms['dsn'], $pdo_parms['user'], $pdo_parms['pass'],  $pdo_parms['opt']);
-    }
 
 
 ?>
