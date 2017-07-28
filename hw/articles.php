@@ -44,26 +44,19 @@
         ];
 
         $Content  =  new Content($row);
+
         articlesBL::executeStatement("insert into ls42_contents (content_type,
                                                                  content_header,
-                                                                 content_text,
+                                                                 content_text)
                                                         values  (:content_type,
                                                                  :content_header,
                                                                  :content_text)",
-                                      [     "content_type" => $Content->getContentType(), 
+                                      [     
+                                            "content_type" => $Content->getContentType(), 
                                             "content_header" => $Content->getContentHeader(), 
                                             "content_text" => $Content->getContentText()      ]);
 
-        // $pdo = get_PDO();
-        // $stmt = $pdo->prepare("insert into employee (employee_name,
-        //                                              employee_work_start_date)
-        //                             values  (:employee_name,
-        //                                      :employee_work_start_date)");
-
-        //         $stmt ->execute(array("employee_name" => $Employee -> getEmpName(), 
-        //                               "employee_work_start_date" => $Employee -> getEmpWorkStartDate(), 
-        //             ));
-         echo 'insert successful';            
+        echo 'insert successful';            
     }
 
 
