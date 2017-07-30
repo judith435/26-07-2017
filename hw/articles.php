@@ -11,14 +11,31 @@
             case "AddArticle":
                 AddArticle();
                 break;
+            case "SaveArticle":
+                SaveArticle();
+                break;
             case "ShowArticles":
                 ShowArticles();
+                break;
+            case "Return":
+                ReturnToMain();
                 break;
         }
     }
 
+    function ShowArticles(){
+        header('Location: showArticles.php'); 
+    }
+
+    function ReturnToMain(){
+        header('Location: index.html'); 
+    }
 
     function AddArticle(){
+        header('Location: addArticle.html'); 
+    }
+
+    function SaveArticle(){
         if($_POST["content_header"] == '')
         {
             echo 'please enter content header';
@@ -30,11 +47,6 @@
             echo 'please enter content text';
             return;
         }
-
-        // $this->id = $row['id'];
-        //     $this->content_type = $row['content_type'];
-        //     $this->content_header = $row['content_header'];
-        //     $this->content_text = $row['content_text'];
 
         $row =    [
                     "id" => "0",
