@@ -1,5 +1,4 @@
 <?php
-
     require_once 'Content.php';
     require_once 'articlesBL.php';
 
@@ -70,8 +69,4 @@
 
         echo 'insert successful';            
     }
-
-
-
-
 ?>
