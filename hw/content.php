@@ -13,6 +13,10 @@
             $this->content_text = $row['content_text'];
         }
 
+        public function getContentID() {
+            return $this->id;
+        }
+
         public function getContentType() {
             return $this->content_type;
         }
